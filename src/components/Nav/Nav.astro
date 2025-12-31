@@ -1,0 +1,16 @@
+---
+import config from "./config";
+import "./nav.css";
+---
+
+<nav>
+  <ul>
+    {
+      config.map((item) => (
+        <li>
+          <a href={item.url}>{item.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
