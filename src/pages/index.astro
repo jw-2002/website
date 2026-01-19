@@ -1,7 +1,44 @@
 ---
 import DefaultTemplate from "../components/DefaultTemplate/DefaultTemplate.astro";
+import Carousel from "../components/Carousel/Carousel.astro";
+
+const rawBase = import.meta.env.BASE_URL || "/";
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+const link = (path: string) => {
+  if (!path || path === "/") return "/";
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+
+const slides = [
+  {
+    title: "Why this exists",
+    body: "I just wanted a place to put things to remember!",
+  },
+  {
+    title: "What you can find here",
+    body: "Audio (.mp3) and video (.mp4) are both supported, and everything lives in public/media as static files.",
+  },
+  {
+    title: "Keep it simple",
+    body: "Nothing fancy: minimal layout, readable type, and quick navigation between demos and about.",
+  },
+];
 ---
 
-<DefaultTemplate title="Root" metaDescription="This is the root page of the Astro site.">
-  <p>Hey ...</p>
+<DefaultTemplate title="jw-2002" metaDescription="jw-2002 website root">
+  <section class="page-header">
+    <h1>Home</h1>
+  </section>
+
+  <Carousel slides={slides} />
 </DefaultTemplate>
+
+<style>
+  ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--color-muted);
+    display: grid;
+    gap: var(--space-2xs);
+  }
+</style>

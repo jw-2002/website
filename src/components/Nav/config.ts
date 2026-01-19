@@ -1,3 +1,4 @@
 export default [
-  { title: "Root", url: "/" },
+  { title: "Home", url: "/" },
+  { title: "Demos", url: "/demos" },
 ];
